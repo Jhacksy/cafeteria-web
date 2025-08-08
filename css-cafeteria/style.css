@@ -1,0 +1,925 @@
+/* css-cafeteria/style.css */
+
+/* --- Importación de Fuentes de Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+/* Asegúrate de que estas son las mismas que tienes en tu HTML */
+
+/* --- Variables CSS: Paleta de Colores de Panadería --- */
+:root {
+    /* Colores Base */
+    --bg-dark: #28242A; /* Un fondo oscuro con un toque más cálido que el gris puro */
+    --bg-light-dark: #3F3C43; /* Un tono oscuro secundario para secciones, ligeramente más claro */
+    --text-light: #FBF7F0; /* Texto muy claro, casi crema, para legibilidad sobre oscuro */
+    --text-dark-contrast: #1A181C; /* Para elementos que necesiten mucho contraste sobre fondos claros */
+    --border-color: rgba(255, 255, 255, 0.08); /* Líneas de separación muy sutiles */
+
+    /* Colores de Acento (Inspirados en Panadería y Dulces) */
+    --accent-bread-crust: #D19C3F; /* Dorado/marrón cálido, como la corteza del pan. CTA principal. */
+    --accent-cream: #FFF5E7; /* Blanco cremoso suave, para detalles, iconos, o fondos específicos. */
+    --accent-berry: #C45F6D; /* Rojo/rosa suave, como frutos rojos o rellenos dulces. Para resaltar. */
+    --accent-chocolate: #5C3D2E; /* Marrón chocolate profundo, para subtítulos o toque gourmet. */
+    --accent-mint: #9DC3A9; /* Verde menta/pistacho suave, para frescura o ingredientes naturales. */
+    --accent-flour: #EFEBE0; /* Blanco harina muy sutil, para fondos de tarjetas o pequeñas secciones. */
+
+    /* Fuentes */
+    --font-primary: 'Poppins', sans-serif; /* Para el cuerpo del texto y elementos generales */
+    --font-heading: 'Montserrat', sans-serif; /* Para títulos y elementos destacados */
+
+    /* Espaciado Básico */
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 40px;
+    --spacing-xl: 80px;
+}
+
+/* --- Reset Básico y Estilos Generales --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--text-light); /* Color de texto base para toda la página */
+    background-color: var(--bg-dark); /* Color de fondo base */
+    overflow-x: hidden; /* Evita el scroll horizontal */
+}
+
+/* Contenedor central (para limitar el ancho del contenido) */
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* Centra el contenedor */
+    padding: 0 var(--spacing-md); /* Espaciado a los lados en pantallas pequeñas */
+}
+
+/* Estilos para títulos */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--accent-bread-crust); /* Color de acento para los títulos */
+    margin-bottom: var(--spacing-md);
+}
+
+h1 { font-size: 3.5em; } /* Tamaño grande para el título principal */
+h2 { font-size: 2.5em; }
+h3 { font-size: 1.8em; }
+h4 { font-size: 1.3em; }
+
+/* Párrafos */
+p {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-light);
+}
+
+/* Enlaces */
+a {
+    color: var(--accent-cream); /* Color por defecto para enlaces */
+    text-decoration: none; /* Quita el subrayado */
+    transition: color 0.3s ease; /* Transición suave al pasar el ratón */
+}
+
+a:hover {
+    color: var(--accent-berry); /* Cambio de color al pasar el ratón */
+}
+
+/* Botones genéricos */
+.btn {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+
+/* Botón Primario (el más importante, color principal) */
+.btn-primary {
+    background-color: var(--accent-bread-crust);
+    color: var(--bg-dark); /* Texto oscuro sobre el botón dorado */
+    border: 2px solid var(--accent-bread-crust);
+}
+
+.btn-primary:hover {
+    background-color: transparent; /* Fondo transparente al pasar el ratón */
+    color: var(--accent-bread-crust); /* El texto toma el color del borde */
+}
+
+/* Botón Secundario (si quieres uno con menos énfasis) */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--accent-cream);
+    border: 2px solid var(--accent-cream);
+}
+
+.btn-secondary:hover {
+    background-color: var(--accent-cream);
+    color: var(--bg-dark);
+}
+
+/* Estilos generales para secciones principales (padding vertical, etc.) */
+.page-content {
+    padding: var(--spacing-xl) 0; /* Espaciado vertical para todas las secciones de contenido */
+}
+
+/* Clases para colores de fondo */
+.bg-dark {
+    background-color: var(--bg-dark);
+}
+
+.bg-light-dark {
+    background-color: var(--bg-light-dark);
+}
+
+.bg-flour { /* Para usar en elementos que necesiten un fondo muy claro, como tarjetas */
+    background-color: var(--accent-flour);
+    color: var(--text-dark-contrast); /* Texto oscuro sobre este fondo claro */
+}
+
+/* --- Estilos del Header --- */
+header {
+    background-color: var(--bg-light-dark); /* Fondo oscuro del header */
+    color: var(--text-light);
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid var(--border-color); /* Línea sutil en la parte inferior */
+    position: sticky; /* Se queda pegado arriba al hacer scroll */
+    top: 0;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.header-content {
+    display: flex; /* Para poner el logo y la nav uno al lado del otro */
+    justify-content: space-between; /* Separa el logo de la navegación */
+    align-items: center; /* Alinea verticalmente */
+}
+
+/* css-cafeteria/style.css */
+
+/* ... (tus estilos existentes del header y logo) ... */
+
+.logo img {
+    /* Estilos que ya tenías o similares */
+    height: 60px; /* Asegura que el logo tenga un tamaño fijo */
+    width: 60px;  /* **IMPORTANTE: el ancho debe ser igual a la altura para un círculo perfecto** */
+    object-fit: cover; /* Para que la imagen cubra el área sin distorsionarse si es rectangular */
+
+    /* --- COMANDO PARA HACERLO CIRCULAR --- */
+    border-radius: 50%; /* Esto lo convierte en un círculo */
+    /* Opcional: un pequeño borde si quieres */
+    border: 2px solid var(--accent-cream);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav ul {
+    list-style: none; /* Quita los puntos de la lista */
+    display: flex; /* Para poner los ítems del menú en fila */
+}
+
+nav ul li {
+    margin-left: var(--spacing-lg); /* Espacio entre los ítems del menú */
+}
+
+nav ul li a {
+    color: var(--text-light); /* Color de los enlaces del menú */
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+}
+
+nav ul li a::after { /* Efecto de línea debajo al pasar el ratón */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent-bread-crust);
+    transition: width 0.3s ease-in-out;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after { /* Si tienes una clase 'active' para la página actual */
+    width: 100%;
+}
+
+nav ul li a:hover {
+    color: var(--accent-bread-crust); /* Color de acento al pasar el ratón */
+}
+
+/* --- Estilos del Footer --- */
+footer {
+    background-color: var(--bg-light-dark); /* Mismo color que el header o ligeramente diferente */
+    color: var(--text-light);
+    padding: var(--spacing-xl) 0;
+    border-top: 1px solid var(--border-color); /* Línea sutil en la parte superior */
+    text-align: center; /* Centra el texto por defecto */
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    justify-content: space-around; /* Distribuye el espacio entre las columnas */
+    align-items: flex-start; /* Alinea los ítems arriba */
+    text-align: left; /* Restaura la alineación de texto dentro de las columnas */
+    gap: var(--spacing-lg); /* Espacio entre columnas */
+}
+
+.footer-info, .footer-nav, .footer-social {
+    flex: 1; /* Permite que las columnas ocupen espacio equitativamente */
+    min-width: 250px; /* Ancho mínimo antes de que se envuelvan */
+    margin-bottom: var(--spacing-md); /* Espacio inferior para cada bloque */
+}
+
+.footer-info p {
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-light); /* Asegura el color del texto */
+}
+
+.footer-info i { /* Estilo para los iconos de información */
+    color: var(--accent-bread-crust);
+    margin-right: 10px;
+}
+
+.footer-nav ul {
+    list-style: none;
+}
+
+.footer-nav ul li {
+    margin-bottom: var(--spacing-sm);
+}
+
+.footer-nav ul li a {
+    color: var(--text-light);
+}
+
+.footer-nav ul li a:hover {
+    color: var(--accent-bread-crust);
+}
+
+.footer-social h4 {
+    color: var(--text-light); /* Color para el título "Síguenos" */
+    margin-bottom: var(--spacing-md);
+}
+
+.social-links a {
+    font-size: 1.8em;
+    color: var(--accent-cream); /* Color de los iconos sociales */
+    margin-right: var(--spacing-md);
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-bread-crust); /* Cambio de color al pasar el ratón */
+}
+
+/* --- Estilos de la Sección Hero (Página de Inicio) --- */
+.hero-cafe {
+    background-image: url('../images/hero_cafe_bg.jpg'); /* RUTA DE LA IMAGEN DE FONDO */
+    background-size: cover; /* La imagen cubrirá todo el espacio */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    color: var(--text-light); /* Texto claro sobre la imagen oscura */
+    text-align: center;
+    padding: 180px 0 100px 0; /* Más padding arriba para centrar verticalmente */
+    position: relative; /* Para poder usar pseudo-elementos si fuera necesario */
+}
+
+/* Oscurecer un poco la imagen de fondo para que el texto resalte */
+.hero-cafe::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Capa oscura semitransparente */
+    z-index: 1; /* Asegura que esté por debajo del contenido */
+}
+
+.hero-cafe .hero-content {
+    position: relative; /* Asegura que el contenido esté por encima del pseudo-elemento */
+    z-index: 2;
+    max-width: 800px; /* Limita el ancho del texto del héroe */
+    margin: 0 auto;
+}
+
+.hero-cafe h1 {
+    font-size: 4.5em; /* Título muy grande */
+    margin-bottom: var(--spacing-md);
+    color: var(--accent-cream); /* Color que resalta en el hero */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para el texto para mayor legibilidad */
+}
+
+.hero-cafe p {
+    font-size: 1.5em;
+    margin-bottom: var(--spacing-lg);
+    color: var(--accent-flour); /* Un tono de blanco más suave para el párrafo */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Estilos de la Sección de Contacto --- */
+.contacto-section {
+    background-color: var(--bg-dark); /* Fondo de la sección de contacto */
+    text-align: center; /* Centra el título y el párrafo */
+}
+
+.contacto-form-container { /* Contenedor para el formulario en sí */
+    max-width: 700px; /* Limita el ancho del formulario */
+    margin: 0 auto;
+    padding: var(--spacing-xl) 0;
+    background-color: var(--bg-light-dark); /* Fondo para el bloque del formulario */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.contacto-section h1 {
+    color: var(--accent-bread-crust);
+    margin-bottom: var(--spacing-md);
+}
+
+.contacto-section p.section-intro { /* Usa esta clase para el párrafo introductorio si lo añades */
+    font-size: 1.1em;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-light);
+}
+
+.contacto-form-container form {
+    display: flex;
+    flex-direction: column; /* Organiza los elementos del formulario en columna */
+    gap: var(--spacing-md); /* Espacio entre los campos del formulario */
+    padding: 0 var(--spacing-lg); /* Padding interno del formulario */
+}
+
+.form-group {
+    text-align: left; /* Alinea etiquetas a la izquierda */
+}
+
+.contacto-form-container label {
+    display: block; /* Cada label en su propia línea */
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+.contacto-form-container input[type="text"],
+.contacto-form-container input[type="email"],
+.contacto-form-container textarea {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--bg-dark); /* Fondo de los campos de input */
+    color: var(--text-light);
+    font-family: var(--font-primary);
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.contacto-form-container input:focus,
+.contacto-form-container textarea:focus {
+    border-color: var(--accent-bread-crust); /* Borde de acento al enfocar */
+    outline: none; /* Quita el contorno por defecto del navegador */
+}
+
+.contacto-form-container textarea {
+    resize: none; /* Permite redimensionar solo verticalmente */
+    min-height: 120px;
+}
+
+.contacto-form-container .btn-primary {
+    align-self: center; /* Centra el botón en la columna */
+    margin-top: var(--spacing-md); /* Espacio encima del botón */
+    width: 50%; /* Ocupa el 50% del ancho del formulario */
+    max-width: 250px;
+}
+
+/* --- Estilos de la Sección de Galería --- */
+.galeria-section {
+    background-color: var(--bg-dark);
+    text-align: center;
+}
+
+.galeria-section h1 {
+    color: var(--accent-bread-crust);
+    margin-bottom: var(--spacing-md);
+}
+
+.galeria-section p.section-intro { /* Para el párrafo introductorio de la galería */
+    font-size: 1.1em;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-light);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columnas responsivas */
+    gap: var(--spacing-md); /* Espacio entre las imágenes */
+    margin-top: var(--spacing-xl);
+}
+
+.galeria-grid img {
+    width: 100%; /* Las imágenes ocupan todo el ancho de su celda */
+    height: 250px; /* Altura fija para uniformidad */
+    object-fit: cover; /* Cubre el espacio manteniendo proporciones */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.galeria-grid img:hover {
+    transform: scale(1.03); /* Ligero aumento al pasar el ratón */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Estilos de la Sección de Menú --- */
+.menu-section { /* Esto es para la parte superior de la página del menú (título, descripción, botón) */
+    background-image: url('../images/menu_bg.jpg'); /* Opcional: otra imagen de fondo para el hero del menú */
+    background-size: cover;
+    background-position: center;
+    background-color: var(--bg-dark); /* Color de fallback */
+    text-align: center;
+    color: var(--text-light);
+    padding: 150px 0 80px 0;
+    position: relative;
+}
+
+.menu-section::before { /* Capa oscura para el fondo del menú también */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.menu-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.menu-section h1 {
+    font-size: 4em;
+    color: var(--accent-cream); /* Color brillante para el título del menú */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    margin-bottom: var(--spacing-md);
+}
+
+.menu-section p.section-intro {
+    font-size: 1.3em;
+    color: var(--accent-flour);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* --- Estilos para las Categorías y Productos del Menú --- */
+.menu-items-categories {
+    background-color: var(--bg-light-dark); /* Fondo para la sección de los ítems del menú */
+}
+
+.menu-category {
+    margin-bottom: var(--spacing-xl); /* Espacio entre categorías */
+    text-align: center; /* Centra el título de la categoría */
+}
+
+.menu-category h2 {
+    color: var(--accent-bread-crust);
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+    display: inline-block; /* Para que la línea pseudo-elemento se ajuste al texto */
+}
+
+.menu-category h2::after { /* Línea decorativa debajo del título de la categoría */
+    content: '';
+    display: block;
+    width: 60%;
+    height: 3px;
+    background-color: var(--accent-berry); /* Un color de acento dulce */
+    margin: 10px auto 0 auto; /* Centra la línea */
+    border-radius: 2px;
+}
+
+.menu-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 o 3 columnas responsivas */
+    gap: var(--spacing-lg); /* Espacio entre los ítems del menú */
+}
+
+.menu-item {
+    background-color: var(--bg-dark); /* Fondo oscuro para cada ítem del menú */
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: left; /* Alinea el texto de cada ítem a la izquierda */
+    border: 1px solid var(--border-color); /* Borde sutil */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px); /* Efecto de levitar al pasar el ratón */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.menu-item h4 {
+    color: var(--accent-cream); /* Color para el nombre del producto */
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.menu-item p {
+    font-size: 0.95em;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+.menu-item span { /* Estilo para el precio */
+    display: block; /* Para que el precio esté en su propia línea */
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--accent-bread-crust); /* Color de acento para el precio */
+    margin-top: var(--spacing-sm);
+}
+
+/* --- Estilos de la Sección Sobre Nosotros --- */
+.about-cafe-section {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+}
+
+.about-us-grid { /* Contenedor para el diseño de 2 columnas */
+    display: flex; /* O usa display: grid; grid-template-columns: 1fr 1fr; */
+    flex-direction: row; /* Texto e imagen uno al lado del otro en escritorio */
+    gap: var(--spacing-xl); /* Espacio entre las columnas */
+    align-items: center; /* Alinea verticalmente los elementos */
+}
+
+.about-us-text {
+    flex: 1; /* Ocupa el espacio disponible */
+    padding-right: var(--spacing-lg); /* Espacio a la derecha del texto */
+}
+
+.about-us-text h1 {
+    color: var(--accent-bread-crust);
+    margin-bottom: var(--spacing-md);
+}
+
+.about-us-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+}
+
+.about-us-image-wrapper {
+    flex: 1; /* Ocupa el espacio disponible */
+    text-align: center; /* Centra la imagen si el wrapper es más grande */
+}
+
+.about-us-image-wrapper img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Bordes redondeados para la imagen */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+    display: block; /* Elimina espacio extra debajo de la imagen */
+    margin: 0 auto; /* Centra la imagen si el wrapper es más ancho */
+}
+
+/* --- Media Queries (Adaptación a Dispositivos Móviles) --- */
+@media (max-width: 768px) {
+    /* Ajustes generales para pantallas medianas */
+    .container {
+        padding: 0 var(--spacing-md); /* Más padding lateral en móvil */
+    }
+
+    h1 { font-size: 2.8em; }
+    h2 { font-size: 2em; }
+    h3 { font-size: 1.5em; }
+
+    /* Header */
+    .header-content {
+        flex-direction: column; /* Apila el logo y la navegación */
+        text-align: center;
+    }
+
+    .logo {
+        margin-bottom: var(--spacing-md);
+    }
+
+    nav ul {
+        flex-direction: column; /* Apila los ítems del menú */
+        gap: var(--spacing-sm); /* Menos espacio entre ítems */
+    }
+
+    nav ul li {
+        margin-left: 0; /* Quita el margen lateral */
+    }
+
+    /* Hero Section */
+    .hero-cafe {
+        padding: 100px 0 60px 0; /* Menos padding en móvil */
+    }
+
+    .hero-cafe h1 {
+        font-size: 3em;
+    }
+
+    .hero-cafe p {
+        font-size: 1.2em;
+    }
+
+    /* Contacto Section */
+    .contacto-form-container {
+        padding: var(--spacing-lg); /* Menos padding para el formulario */
+    }
+
+    .contacto-form-container .btn-primary {
+        width: 80%; /* Botón más ancho en móvil */
+    }
+
+    /* Galería Section */
+    .galeria-grid {
+        grid-template-columns: 1fr; /* Una columna en móvil */
+    }
+
+    /* Menú Section */
+    .menu-section {
+        padding: 100px 0 60px 0;
+    }
+
+    .menu-section h1 {
+        font-size: 3em;
+    }
+
+    .menu-section p.section-intro {
+        font-size: 1.1em;
+    }
+
+    .menu-items-grid {
+        grid-template-columns: 1fr; /* Una columna para los ítems del menú en móvil */
+    }
+
+    /* Sobre Nosotros Section */
+    .about-us-grid {
+        flex-direction: column; /* Apila el texto y la imagen */
+        gap: var(--spacing-lg); /* Espacio entre elementos apilados */
+    }
+
+    .about-us-text,
+    .about-us-image-wrapper {
+        padding-right: 0; /* Quita el padding lateral extra */
+    }
+
+    /* Footer */
+    .footer-content {
+        flex-direction: column; /* Apila las columnas del footer */
+        align-items: center; /* Centra los bloques */
+        text-align: center; /* Centra el texto de cada bloque */
+    }
+
+    .footer-info, .footer-nav, .footer-social {
+        min-width: unset; /* Reinicia el ancho mínimo */
+        width: 100%; /* Ocupa todo el ancho */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajustes para móviles muy pequeños */
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.8em; }
+    .hero-cafe h1 { font-size: 2.5em; }
+}
+
+/* Estilos para la Sección de Especialidades */
+.specialties-section {
+    padding-bottom: var(--spacing-xl); /* Espacio extra abajo */
+}
+
+.specialties-section h2 {
+    color: var(--accent-bread-crust);
+}
+
+.specialties-section .section-intro {
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xl);
+}
+
+.specialties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    justify-content: center; /* Centra los ítems si no llenan la cuadrícula */
+}
+
+.specialty-item {
+    background-color: var(--bg-light-dark);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: var(--spacing-md);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.specialty-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.specialty-item img {
+    width: 100%;
+    height: 200px; /* Altura fija para las imágenes */
+    object-fit: cover;
+    border-radius: 8px; /* Bordes redondeados para las imágenes dentro */
+    margin-bottom: var(--spacing-md);
+}
+
+.specialty-item h3 {
+    color: var(--accent-cream);
+    font-size: 1.5em;
+    margin-bottom: var(--spacing-sm);
+}
+
+.specialty-item p {
+    color: var(--text-light);
+    font-size: 0.95em;
+    line-height: 1.5;
+    margin-bottom: var(--spacing-md);
+}
+
+.specialty-item .btn {
+    margin-top: var(--spacing-sm); /* Espacio si el párrafo es más corto */
+}
+
+/* Responsive para Especialidades */
+@media (max-width: 768px) {
+    .specialties-grid {
+        grid-template-columns: 1fr; /* Una columna en móviles */
+    }
+}
+
+/* Estilos para la Sección de Testimonios */
+.testimonials-section h2, .testimonials-section .section-intro {
+    color: var(--text-dark-contrast); /* Asegura que el texto sea oscuro sobre fondo claro */
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.testimonial-item {
+    background-color: var(--accent-cream); /* Fondo cremoso para cada testimonio */
+    padding: var(--spacing-md);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    color: var(--text-dark-contrast); /* Texto oscuro */
+    transition: transform 0.3s ease;
+}
+
+.testimonial-item:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial-item .quote {
+    font-style: italic;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.7;
+}
+
+.testimonial-item .author {
+    font-weight: 600;
+    color: var(--accent-bread-crust); /* Color de acento para el autor */
+    font-size: 0.9em;
+}
+
+/* Responsive para Testimonios */
+@media (max-width: 768px) {
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Estilos para la Sección de Historia y Filosofía */
+.history-philosophy-section h2 {
+    color: var(--accent-bread-crust);
+    margin-bottom: var(--spacing-lg);
+}
+
+.history-content {
+    display: flex;
+    flex-direction: row; /* Texto e imagen uno al lado del otro */
+    gap: var(--spacing-xl);
+    align-items: flex-start; /* Alinea los ítems arriba */
+    text-align: left; /* Restaura la alineación del texto */
+    margin-top: var(--spacing-xl);
+}
+
+.history-text {
+    flex: 2; /* Ocupa más espacio el texto */
+}
+
+.history-text p {
+    font-size: 1em;
+    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-light);
+}
+
+.history-image {
+    flex: 1; /* Ocupa menos espacio la imagen */
+    text-align: center;
+}
+
+.history-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive para Historia y Filosofía */
+@media (max-width: 768px) {
+    .history-content {
+        flex-direction: column; /* Apila el texto y la imagen en móvil */
+        align-items: center;
+        text-align: center; /* Centra el texto en móvil */
+    }
+    .history-image img {
+        margin-top: var(--spacing-lg); /* Espacio entre el texto y la imagen */
+    }
+}
+
+/* Estilos para la Sección de Equipo */
+.team-section h2 {
+    color: var(--accent-bread-crust);
+}
+
+.team-section .section-intro {
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xl);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+    justify-content: center;
+}
+
+.team-member {
+    background-color: var(--bg-light-dark);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: var(--spacing-md);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.team-member img {
+    width: 150px; /* Tamaño fijo para las fotos del equipo */
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%; /* Hacer las fotos circulares */
+    border: 3px solid var(--accent-bread-crust); /* Borde de acento */
+    margin-bottom: var(--spacing-md);
+}
+
+.team-member h3 {
+    color: var(--accent-cream);
+    font-size: 1.4em;
+    margin-bottom: var(--spacing-sm);
+}
+
+.team-member .role {
+    color: var(--accent-berry); /* Color de acento para el rol */
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.team-member p {
+    color: var(--text-light);
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+/* Responsive para Equipo */
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+}
